@@ -12,30 +12,18 @@
           <span >{{ props.row.id}}</span>
         </b-table-column>
         <b-table-column          
-          v-slot="props"
-          class="users-table--b-table--email"               
-        >                                 
-          <span>{{ props.row.email }}</span>            
-        </b-table-column>  
-         <b-table-column          
-          v-slot="props"               
-        >     
-         <div
-            v-if="IsAdminUser"
-            class="users-table--b-table--remove-user"            
-            @click="removeUser(props.row)"
-          >                            
-          <remove-user />        
-         </div>   
-        </b-table-column>                            
+          v-slot="props"                 
+        > 
+        <div class="users-table--b-table--email">                                
+          {{ props.row.email }}   
+        </div>         
+        </b-table-column>                                  
     </b-table>
 </template>
 
 <script>
-import removeUser from "../assets/remove_user.svg";
 export default {
     name: 'UserTable',
-     components: { removeUser },
      props:{
         
         isAdminUser: {
@@ -68,22 +56,13 @@ export default {
                     {
                         field: 'email',
                         label: 'email',
-                    },
-                    {
-                        field: 'manage',
-                        label: 'Manage',
-                    }    
+                    }                    
             ]   
         }
     },
     computed: {
     IsAdminUser() {     
       return this.isAdminUser;
-    },
-    methods: {
-    removeUser(member) {     
-      this.$emit("remove-user", member);
-    }
     }
   }    
 };

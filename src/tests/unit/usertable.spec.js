@@ -18,11 +18,9 @@ const localVue = createLocalVue();
 localVue.use(Buefy);
 describe("UserTable.vue", () => {
 test("Test UserTable", async () => {
-    const wrapper = getWrapper();
-    let htmll= wrapper.html();
-    console.log(htmll);   
+    const wrapper = getWrapper();    
     await wrapper.vm.$nextTick();
-    expect(wrapper.find(".users-table--b-table--email").exists()).toBe(
+    expect(wrapper.find("users-table--b-table--email").exists()).toBe(
       true
     );
     expect(wrapper.element).toMatchSnapshot(); 
